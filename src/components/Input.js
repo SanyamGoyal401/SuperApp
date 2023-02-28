@@ -1,9 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-const Input = (props) => {
+const Input = ({type, initial, data, setData}) => {
+  const [val, setVal] = useState(data[initial])
   return (
     <div>
-        <input type={props.type} placeholder={props.initial}/>
+        <input type={type} placeholder={initial} value = {val} onChange = {(e) =>{
+          setVal(e.target.value)
+          data[initial] = e.target.value;
+          setData(data);
+        }}/>
     </div>
   )
 }

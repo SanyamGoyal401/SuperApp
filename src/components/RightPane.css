@@ -3,11 +3,12 @@
 .container {
   background-color: black;
   color: white;
-  flex: 1;
+  flex: 0.8;
   text-align: center;
   padding: 2% 8%;
   box-sizing: border-box;
   display: flex;
+  height: 100vh;
   flex-direction: column;
   justify-content: space-around;
 }
@@ -18,13 +19,20 @@
 .create{
     font-size: 1.5rem;
 }
-
+.error{
+    color: red;
+}
+.mail{
+  cursor: pointer;
+}
 .signup{
     font-size: 1.5rem;
     color: white;
-    padding: 1% 0;
+    padding: 2%;
+    cursor: pointer;
+    width: 100%;
     background-color: #72db73;
-    border-radius: 25px;
+    border-radius: 30px;
 }
 .green {
   color: #72db73;
@@ -32,6 +40,9 @@
 .mail{
     font-size: 1.2rem;
     letter-spacing: 2px;
+}
+.consent{
+  margin: 10px 0;
 }
 
 .roboto {
