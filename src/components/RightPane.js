@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Input from "./Input";
 import "./RightPane.css";
 const RightPane = () => {
+  const navigate = useNavigate();
   //for handling values of form
   const [formData, setFormData] = useState({
     Name: "",
@@ -23,6 +25,7 @@ const RightPane = () => {
     console.log(checkbox);
     let error = false;
     if (!formData.Name) {
+      error = true;
       errData = { ...errData, ["nameError"]: "Name cannot be empty" };
       setErrData(errData);
     } else {
@@ -30,6 +33,7 @@ const RightPane = () => {
       setErrData(errData);
     }
     if (!formData.UserName) {
+      error = true;
       errData = { ...errData, ["userNameError"]: "Username cannot be empty" };
       setErrData(errData);
     } else {
@@ -37,6 +41,7 @@ const RightPane = () => {
       setErrData(errData);
     }
     if (!formData.Email) {
+      error = true;
       errData = { ...errData, ["emailError"]: "Email cannot be empty" };
       setErrData(errData);
     } else {
@@ -44,6 +49,7 @@ const RightPane = () => {
       setErrData(errData);
     }
     if (!formData.Mobile) {
+      error = true;
       errData = {
         ...errData,
         ["mobileError"]: "Mobile number cannot be empty",
@@ -57,12 +63,16 @@ const RightPane = () => {
       errData = { ...errData, ["checkedError"]: "" };
       setErrData(errData);
     } else {
+      error = true;
       errData = { ...errData, ["checkedError"]: "Agree to the terms" };
       setErrData(errData);
     }
     if (error === true) {
       console.log("cannot logged in");
     } else {
+      console.log(errData);
+      console.log(formData);
+      navigate('/category', {replace: false});
       console.log("You are successfully logged in");
     }
   };
@@ -76,7 +86,7 @@ const RightPane = () => {
         Email&nbsp;<span className="green sans">|</span>&nbsp;Google
       </div>
       <br />
-      <form action="/">
+      <form id="signup" action="/category">
         <Input
           type="text"
           initial="Name"
